@@ -1,0 +1,20 @@
+process-company-report-request:
+  schedule: 1 * * * * *
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  datasource:
+    url: jdbc:postgresql://localhost:5432/analytics
+    username: postgres
+    password: pass
+    hikari:
+      connection-timeout: 15000
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  liquibase:
+    change-log: classpath:db/changelog.xml
+    liquibase-schema: "analytics"
